@@ -3,10 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Для тебя</title>
+  <meta name="theme-color" content="#f4eee4">
+  <meta name="description" content="Одно особенное приглашение. Лично для тебя.">
+  <title>Одно особенное приглашение</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23f4eee4'/%3E%3Cpath d='M32 49S10 36 10 22c0-12 17-15 22-3 5-12 22-9 22 3 0 14-22 27-22 27Z' fill='%23843e4e'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./assets/invitation-together.js" defer></script>
+  <script src="./app.js" defer></script>
 </head>
 <body>
-  <h1>У тебя одно новое приглашение 💌</h1>
-  <p>Скоро здесь будет кое-что интересное...</p>
+  <div class="page-shell">
+    <header class="page-header">
+      <a class="wordmark" href="./" aria-label="Приглашение, с начала">
+        <span class="wordmark-symbol" aria-hidden="true">♡</span>
+        <span>особенный повод</span>
+      </a>
+    </header>
+
+    <main id="main-content">
+      <section class="screen screen-welcome" data-screen="welcome" aria-labelledby="welcome-title">
+        <svg class="welcome-envelope" viewBox="0 0 120 90" fill="none" aria-hidden="true">
+          <rect x="9" y="18" width="102" height="64" rx="3" fill="var(--card)" stroke="currentColor" />
+          <path d="M10 20 60 55 110 20M10 80 43 48M110 80 77 48" stroke="currentColor" stroke-linejoin="round" />
+          <path d="M60 64S47 56 47 49c0-8 10-10 13-3 3-7 13-5 13 3 0 7-13 15-13 15Z" fill="var(--cherry)" stroke="var(--card)" stroke-width="3" />
+        </svg>
+        <h1 id="welcome-title" tabindex="-1">Аня, <em>привет</em> <span class="welcome-heart" aria-hidden="true">♡</span></h1>
+        <p class="welcome-note">Я тут кое-что для тебя придумал.</p>
+        <button class="welcome-open" id="open-invitation" type="button">Показывай</button>
+      </section>
+
+      <section class="screen screen-photo" data-screen="photo" aria-labelledby="photo-title" hidden>
+        <h1 id="photo-title" tabindex="-1">Где я получился <em>лучше?</em></h1>
+        <div class="feedback-slot">
+          <p class="photo-feedback" id="photo-feedback" hidden>Красиво, конечно. Но этот мужчина на мой день рождения не приглашён.</p>
+        </div>
+
+        <div class="photo-choices" aria-label="Выбери фотографию">
+          <button class="photo-card photo-card-original" type="button" data-photo="original" aria-label="Выбрать первую фотографию: настоящий я">
+            <span class="photo-image"><img id="photo-original" src="./assets/photo-original.jpg" alt="Оригинальное фото" width="420" height="470"></span>
+          </button>
+          <button class="photo-card photo-card-polished" type="button" data-photo="polished" aria-label="Выбрать вторую фотографию: версия с голливудской улыбкой">
+            <span class="photo-image"><img id="photo-polished" src="./assets/photo-polished.png" alt="Улучшенное фото" width="420" height="470"></span>
+          </button>
+        </div>
+
+      </section>
+
+      <section class="screen screen-invite" data-screen="invite" aria-labelledby="invite-title" hidden>
+        <p class="correct-answer">Я всегда знал, что ты умеешь видеть прекрасное.</p>
+
+        <article class="question-ticket" aria-label="Приглашение на день рождения">
+          <div class="ticket-body">
+            <h1 id="invite-title" tabindex="-1">Приедешь ко мне<br>на день рождения?</h1>
+            <div class="button-arena" id="button-arena" aria-label="Твой ответ">
+              <button class="answer answer-yes" id="answer-yes" type="button">Приеду <span aria-hidden="true">♡</span></button>
+              <button class="answer answer-no" id="answer-no" type="button">Не приеду</button>
+            </div>
+            <p class="play-message" id="play-message"></p>
+            <button class="text-button skip-joke" id="skip-joke" type="button">Ладно, без фокусов</button>
+          </div>
+          <p class="ticket-bottomline">Хочу провести эти выходные с тобой.</p>
+        </article>
+      </section>
+
+      <section class="screen screen-yes" data-screen="yes" aria-labelledby="yes-title" hidden>
+        <h1 id="yes-title" tabindex="-1">Ну чё, <em>увидимся.</em> 😊</h1>
+
+        <article class="final-ticket" aria-label="Приглашение любимой Ане на день рождения">
+          <div class="final-ticket-main" id="final-ticket-main">
+            <div class="invitation-mark" aria-hidden="true"><span class="mark-label">для тебя</span><span>♡</span></div>
+            <h2>Приглашение<span class="invitation-recipient" id="invitation-recipient">любимой Ане</span></h2>
+            <dl class="invitation-details">
+              <div><dt>Когда</dt><dd id="invitation-date">31 октября · ДР</dd></div>
+              <div><dt>Где</dt><dd id="invitation-location">Москва, Сколково</dd></div>
+            </dl>
+            <p class="final-message" id="invitation-note">Ты сделаешь именинника счастливее.</p>
+          </div>
+          <aside class="ticket-stub" aria-label="Отрывная часть приглашения">
+            <span class="stub-top">место рядом</span>
+            <span class="stub-heart" aria-hidden="true">♡</span>
+            <span class="stub-reserved">для тебя</span>
+            <span class="barcode" aria-hidden="true"></span>
+          </aside>
+        </article>
+        <div class="invitation-afterword">
+          <p class="signature">Буду ждать тебя <span aria-hidden="true">♡</span></p>
+          <button class="download-button" id="download-invitation" type="button">Скачать приглашение <span aria-hidden="true">↓</span></button>
+        </div>
+        <p class="download-error" id="download-error" role="alert" hidden>Не получилось сохранить картинку. Попробуй ещё раз или сделай скриншот приглашения.</p>
+        <button class="text-button restart" type="button" data-restart>Пройти ещё раз</button>
+      </section>
+
+      <section class="screen screen-no" data-screen="no" aria-labelledby="no-title" hidden>
+        <div class="sad-ticket" aria-hidden="true">
+          <span class="sad-face"><span class="sad-eyes">· ·</span><span class="sad-mouth"></span><span class="sad-tear"></span></span>
+          <span class="sad-ticket-caption">одно место рядом загрустило</span>
+        </div>
+        <h1 id="no-title" tabindex="-1">Эх. Я уже почти<br>встречал тебя <em>на вокзале.</em></h1>
+        <p class="intro">Пойду драматично посмотрю в окно.</p>
+        <p class="no-pressure">Если передумаешь — <button class="text-button retry-link" type="button" data-restart>пройди ещё раз</button>.</p>
+      </section>
+    </main>
+
+    <footer class="page-footer">Петербург <span aria-hidden="true">→</span> Москва</footer>
+  </div>
+  <div class="live-region" id="live-region" role="status" aria-live="polite" aria-atomic="true"></div>
+  <noscript><div class="noscript-message">Чтобы открыть интерактивное приглашение, включи JavaScript в браузере. А главное я скажу и так: очень хочу увидеть тебя 31 октября в Москве, Сколково, на своём дне рождения.</div></noscript>
 </body>
 </html>

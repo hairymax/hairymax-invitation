@@ -1,0 +1,9 @@
+# High-resolution photo sources stay on this computer.
+/assets/*.tif
+/assets/*.tiff
+/assets/*.TIF
+/assets/*.TIFF
+
+# Unused photo placeholders.
+/assets/photo-original.svg
+/assets/photo-polished.svg
